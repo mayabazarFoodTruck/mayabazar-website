@@ -1,23 +1,31 @@
-body, html {
+/* Reset base layout */
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  height: 100%;
+  box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Main container flex layout */
 .main-container {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
+/* Left section: 70% */
 .menu-section {
   width: 70%;
   padding: 20px;
-  overflow-y: auto;
   background-color: #fffaf0;
+  overflow-y: auto;
 }
 
+/* Right section: 30% with image */
 .king-section {
   width: 30%;
   background-color: #000;
@@ -29,7 +37,7 @@ body, html {
   object-fit: cover;
 }
 
-/* Header and Nav */
+/* Header and nav */
 header {
   background-color: #d2691e;
   color: white;
@@ -48,11 +56,12 @@ nav a {
   font-weight: bold;
 }
 
-/* Menu section */
+/* Menu styling */
 #menu {
   background-color: #fff8dc;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 .menu-grid {
@@ -69,12 +78,12 @@ nav a {
   border-radius: 10px;
 }
 
-/* Contact and Footer */
+/* Contact and footer */
 #contact {
   background-color: #f5f5f5;
   padding: 20px;
-  text-align: center;
   border-radius: 10px;
+  text-align: center;
   margin-top: 40px;
 }
 
