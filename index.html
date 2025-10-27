@@ -1,1007 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maya Bazar USA — Indian Street Food Truck</title>
-  <meta name="description" content="Maya Bazar USA brings vibrant Indian street food across the DMV. Fresh, flavorful, and on the move!" />
-  <link rel="canonical" href="https://mayabazarusa.example/" />
-  <meta property="og:title" content="Maya Bazar USA — Indian Street Food Truck" />
-  <meta property="og:description" content="Fresh. Flavorful. On the Move. Follow us @mayabazarusa" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="hero-food.jpg" />
-  <meta name="theme-color" content="#ffcc00" />
-
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
-    :root{
+    :root {
       --brand: #ffcc00;
       --brand-2: #ff6b00;
-      --glass-bg: rgba(255,255,255,0.08);
-      --glass-brd: rgba(255,255,255,0.25);
-      --shadow: 0 10px 30px rgba(0,0,0,.15);
-      --radius: 18px;
+      --radius: 16px;
     }
-    html,body{scroll-behavior:smooth; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}
-
-    /* NAV */
-    .navbar{
-      backdrop-filter: blur(10px);
-      background: linear-gradient(90deg, rgba(10,10,10,.75), rgba(10,10,10,.35));
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #fefefe;
+      scroll-behavior: smooth;
     }
-    .navbar-brand img{height: 38px; border-radius: 8px;}
-    .nav-link{color:#fff!important; opacity:.9}
-    .nav-link:hover{opacity:1}
-
-    /* HERO */
-    .hero{
-      position:relative; min-height: 100svh; display:grid; place-items:center; color:white; text-align:center; overflow:hidden;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(255, 204, 0, .15), transparent 60%),
-                  radial-gradient(900px 500px at 90% 90%, rgba(255, 107, 0, .15), transparent 60%),
-                  #0b0b0c;
+    .btn-brand {
+      background-color: var(--brand);
+      border: none;
+      color: #000;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(255,204,0,.4);
     }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background: url('hero-food.jpg') center/cover no-repeat;
-      opacity:.25; filter: saturate(1.1) contrast(1.05);
-    }
-    .hero-card{
-      position:relative; z-index:2; padding: clamp(1.25rem, 4vw, 2.25rem);
-      border-radius: var(--radius); border:1px solid var(--glass-brd);
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
-      box-shadow: var(--shadow); max-width: 960px; width: min(92vw, 960px);
-    }
-    .hero h1{font-weight:800; letter-spacing:.4px; font-size: clamp(2.2rem, 4.5vw, 3.6rem);}
-    .hero p.lead{opacity:.9; font-size: clamp(1.05rem, 1.8vw, 1.25rem)}
-    .btn-brand{
-      --bs-btn-bg: var(--brand);
-      --bs-btn-border-color: var(--brand);
-      --bs-btn-hover-bg: #ffd74d;
-      --bs-btn-hover-border-color: #ffd74d;
-      --bs-btn-color: #181818;
-      font-weight:700; letter-spacing:.3px;
-      box-shadow: 0 5px 18px rgba(255,204,0,.35);
-    }
-
-    /* SECTIONS */
-    section{padding: clamp(56px, 8vw, 100px) 0;}
-    .section-title{
-      font-weight:800; text-align:center; margin-bottom: 18px;
-    }
-    .section-sub{
-      text-align:center; color:#666; max-width: 700px; margin:0 auto 42px;
-    }
-
-    /* CARDS & MEDIA */
-    .glass{
-      border-radius: var(--radius);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-brd);
-      box-shadow: var(--shadow);
-    }
-    .menu-card img{border-radius: 14px; width:100%; aspect-ratio: 4/3; object-fit: cover;}
-    .menu-card h5{margin-top:.6rem; font-weight:700}
-    .pill{display:inline-block; padding:.35rem .7rem; border-radius: 999px; background: #111; color:#fff; font-size:.8rem}
-
-    /* INSTAGRAM GRID (placeholder thumbs that link to profile) */
-    .ig-grid{display:grid; grid-template-columns: repeat(2,1fr); gap:12px}
-    @media (min-width:768px){ .ig-grid{grid-template-columns: repeat(4,1fr);} }
-    .ig-grid a{position:relative; overflow:hidden; border-radius: 12px; display:block}
-    .ig-grid img{width:100%; height:100%; object-fit: cover; aspect-ratio:1/1; transition: transform .35s ease}
-    .ig-grid a:hover img{transform: scale(1.06)}
-
-    /* SCHEDULE */
-    .schedule .card{border:none; border-radius:16px}
-    .schedule .day{font-weight:700}
-    .badge-time{background:#111; color:#fff}
-
-    /* FOOTER */
-    footer{background:#0c0c0d; color:#9aa0a6}
-    footer a{color:#f5c542; text-decoration:none}
-    footer .social a{font-size:1.25rem; margin-right:.6rem}
-
-    /* APPEAR ANIMS */
-    .reveal{opacity:0; transform: translateY(18px); transition: all .7s ease}
-    .reveal.in{opacity:1; transform: translateY(0)}
-
-    /* DARK MODE TWEAKS */
-    @media (prefers-color-scheme: dark){
-      body{background:#0b0b0c; color:#e9e9e9}
-      .section-sub{color:#a5a5a5}
-      .menu-card h5{color:#fff}
-    }
-.section-title {
-  color: var(--brand-2); /* bright accent */
-}
-/* Fix heading visibility */
-
-
+    .btn-brand:hover { background-color: #ffd84d; }
+    .menu-card { border:1px solid #eee; border-radius:var(--radius); padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .menu-card img { width:100%; border-radius:12px; }
+    .menu-card .price { color: var(--brand-2); font-weight:600; }
+    footer { background:#0c0c0d; color:#ccc; padding:2rem 0; text-align:center; margin-top:4rem; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
-        <!-- TODO: replace logo.png -->
-        <img src=" https://i.postimg.cc/13NFYjT4/IMG-8174.jpg " alt="Maya Bazar USA" onerror="this.style.display='none'">
-        <span class="fw-bold">Maya Bazar USA</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
-              aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand" href="#">Maya Bazar USA</a>
+      <button class="btn btn-brand" id="viewCartBtn">
+        <i class="bi bi-cart3 me-1"></i>Cart <span id="cartCount" class="badge bg-dark text-light">0</span>
       </button>
-      <div id="nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="#instagram">Instagram</a></li>
-          <li class="nav-item"><a class="nav-link" href="#findus">Find Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-lg-2"><a class="btn btn-brand btn-sm" href="https://www.instagram.com/mayabazarusa/" target="_blank" rel="noopener">Follow <i class="bi bi-instagram ms-1"></i></a></li>
-        </ul>
-      </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="top" class="hero">
-    <div class="hero-card reveal">
-      <span class="pill mb-3">Authentic Indian Street Food</span>
-      <h1 class="mb-2">Fresh. Flavorful. On the Move.</h1>
-      <p class="lead mb-4">Serving the DMV with chaats, dosas, rolls, and more — made hot & fast from our truck.</p>
-      <div class="d-flex flex-wrap gap-2 justify-content-center">
-        <a href="#findus" class="btn btn-brand btn-lg"><i class="bi bi-geo-alt-fill me-1"></i> Find Us Today</a>
-        <a href="#menu" class="btn btn-outline-light btn-lg"><i class="bi bi-card-text me-1"></i> View Menu</a>
-      </div>
-    </div>
-  </header>
+  <main class="container" style="margin-top:100px;">
+    <h1 class="text-center mb-4 text-warning">Menu Highlights</h1>
 
-  <!-- ABOUT -->
-  <section id="about" class="container">
-    <h2 class="section-title reveal">Our Story</h2>
-    <p class="section-sub reveal">From bustling Indian streets to your neighborhood, Maya Bazar USA serves bold, vibrant flavors — fast, fresh, and unforgettable.</p>
-    <div class="row align-items-center g-4">
-      <div class="col-md-6 reveal">
-        <!-- TODO: replace truck.jpg -->
-        <img src="https://i.postimg.cc/13NFYjT4/IMG-8174.jpg  " alt="Maya Bazar USA Truck" class="img-fluid rounded-4 shadow">
+    <div class="row" id="menuItems">
+      <div class="col-md-4 mb-4">
+        <div class="menu-card text-center">
+          <img src="https://www.lovelaughmirch.com/wp-content/uploads/2015/07/idli1.jpg" alt="Plain Idly">
+          <h5 class="mt-3">Plain Idly</h5>
+          <p class="price">$5.99</p>
+          <button class="btn btn-sm btn-brand addToCartBtn" data-name="Plain Idly" data-price="5.99">Add to Cart</button>
+        </div>
       </div>
-      <div class="col-md-6 reveal">
-        <div class="glass p-4 p-lg-5">
-          <h3 class="fw-bold">Street Eats, Elevated</h3>
-          <p>We’re obsessed with crisp textures, fragrant spices, and punchy chutneys. Every item is cooked to order and served with a smile.</p>
-          <ul class="list-unstyled small">
-            <li class="mb-2"><i class="bi bi-check-circle me-2"></i>Non-Vegetarian & Vegetarian-friendly options</li>
-            <li class="mb-2"><i class="bi bi-check-circle me-2"></i>Fast service without compromising flavor</li>
-            <li class="mb-2"><i class="bi bi-check-circle me-2"></i>Rotating specials & seasonal pop-ups</li>
-          </ul>
-          <a class="btn btn-dark" href="#menu">Explore the Menu</a>
+      <div class="col-md-4 mb-4">
+        <div class="menu-card text-center">
+          <img src="https://cookingfromheart.com/wp-content/uploads/2019/02/Ghee-Sambar-Idli-1-500x375.jpg" alt="Podi Idly">
+          <h5 class="mt-3">Podi Idly</h5>
+          <p class="price">$6.99</p>
+          <button class="btn btn-sm btn-brand addToCartBtn" data-name="Podi Idly" data-price="6.99">Add to Cart</button>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="menu-card text-center">
+          <img src="https://www.golcondachimney.com/wp-content/uploads/2024/05/ghee-karam-idly-scaled.jpg" alt="Ghee Karam Idly">
+          <h5 class="mt-3">Ghee Karam Idly</h5>
+          <p class="price">$7.99</p>
+          <button class="btn btn-sm btn-brand addToCartBtn" data-name="Ghee Karam Idly" data-price="7.99">Add to Cart</button>
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- MENU -->
-  <section id="menu" class="bg-light-subtle">
-    <div class="container">
-      <h2 class="section-title reveal">Menu Highlights</h2>
-      <p class="section-sub reveal">A teaser of our crowd favorites. Ask at the truck for today’s specials!</p>
-      <h3 class="fw-bold text-center">Idlys</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://www.lovelaughmirch.com/wp-content/uploads/2015/07/idli1.jpg" alt="Plain Idly">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Plain Idly</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$5.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Plain idly served with two different types of chutneys.</p>
-          </div>
+  <!-- CART MODAL -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-cart3 me-2"></i>Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://cookingfromheart.com/wp-content/uploads/2019/02/Ghee-Sambar-Idli-1-500x375.jpg" alt="Podi Idly">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Podi Idly</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Podi Idly served with two different types of chutneys.</p>
-          </div>
+        <div class="modal-body">
+          <ul class="list-group mb-3" id="cartList"></ul>
+          <h5 class="text-end">Total: $<span id="cartTotal">0.00</span></h5>
         </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://www.golcondachimney.com/wp-content/uploads/2024/05/ghee-karam-idly-scaled.jpg" alt="Ghee Karam Idly">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ghee Karam Idly</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$7.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ghee karam idly served with two different types of chutneys.</p>
-          </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-brand" id="checkoutBtn">Proceed to Checkout</button>
         </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://cookingfromheart.com/wp-content/uploads/2019/02/Ghee-Sambar-Idli-1-500x375.jpg" alt="Sambar Idly">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Sambar Idly</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$7.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Sambar idly served with sambar.</p>
-          </div>
-        </div>
-      </div>
-      <h3 class="fw-bold text-center">Dosas</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Plain Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Plain Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$7.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Plain dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Onion Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Onion Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Onion dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Ghee Roast Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ghee Roast Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ghee roast dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Ghee Karam Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ghee Karam Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.49</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ghee karam dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Egg Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Egg Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Egg dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Double Egg Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Double Egg Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.49</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Double egg dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-
-         <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Masala Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Masala Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Masala dosa served with potato stuffing, two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg --> 
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Nellore Karam Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Nellore Karam Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Nellore karam dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Upma Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Upma Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Upma dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-
-          <div class="row g-4">
-
-        
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Chicken Keema Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Chicken Keema Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Chicken keema dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-
-         <h3 class="fw-bold text-center">Special Dosas</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Mayabazar Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Mayabazar Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$11.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Mayabazar dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Pesarattu">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Pesarattu</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Pesarattu served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Upma Pesarattu">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Upma Pesarattu</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Upma pesarattu served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Onion Pesarattu">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Onion Pesarattu</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Onion pesarattu served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Ragi Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ragi Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ragi dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Ragi Upma Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ragi Upma Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ragi upma dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-
-                <div class="row g-4">
-
-        
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-aba0-622f-b5ff-6611d0e6f588/raw?se=2025-08-24T22%3A07%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=082fc057-2fe4-5e97-b8af-4dfb54a8982a&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T11%3A47%3A41Z&ske=2025-08-25T11%3A47%3A41Z&sks=b&skv=2024-08-04&sig=IQG70z5FtQNr%2BXSjc06XyAFWdP2pORz23s%2BU09i8HOY%3D" alt="Ragi Egg Dosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Ragi Egg Dosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Ragi egg dosa served with two different types of chutneys and sambar.</p>
-          </div>
-        </div>
-      </div>
-
-               <h3 class="fw-bold text-center">Trucks Special</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Bezawada Bandi Punugulu">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Bezawada Bandi Punugulu</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Bezawada bandi punugulu served with two different types of chutneys.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Stuffed Mirchi Bajji">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Stuffed Mirchi Bajji</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Stuffed mirchi bajji served with onion and mixture.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Cut Mirchi Bajji">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Cut Mirchi Bajji</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Indian style cut mirchi bajji snack.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Egg Bajji">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Egg Bajji</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Indian style egg bajji snack.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Muntha Masala">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Muntha Masala</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Indian style muntha masala snack.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Mysore Bonda">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Mysore Bonda</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Mysore bonda served with two different types of chutneys.</p>
-          </div>
-        </div>
-      </div>
-
-                <div class="row g-4">
-
-        
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-ed98-6246-b240-61c1ee331110/raw?se=2025-08-24T21%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&scid=9d339f68-8329-54e7-bb7c-a633c47d79e8&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A48%3A54Z&ske=2025-08-25T17%3A48%3A54Z&sks=b&skv=2024-08-04&sig=46QpMMGlUWOoHYdJf1siWw3Fj4O8YmWkoAj3kpOZmK4%3D" alt="Onion Samosa">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Onion Samosa</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$6.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Indian style onion samosa snack.</p>
-          </div>
-        </div>
-      </div>
-
-
-                     <h3 class="fw-bold text-center">Indo-Chinese</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Veg Fried Rice">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Veg Fried Rice</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style vegetable  Indo-Chinese fried rice.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Egg Fried Rice">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Egg Fried Rice</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style egg  Indo-Chinese fried rice.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Chicken Fried Rice">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Chicken Fried Rice</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style chicken  Indo-Chinese fried rice.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-            <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Veg Noodles">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Veg Noodles</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$8.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style vegetable Indo-Chinese noodles.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Egg Noodles">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Egg Noodles</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$9.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style egg Indo-Chinese noodles</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-689c-61f5-be23-26ee7228ee3b/raw?se=2025-08-24T21%3A35%3A15Z&sp=r&sv=2024-08-04&sr=b&scid=bf01ea13-159a-5615-b362-8213aa10d534&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A05Z&ske=2025-08-25T17%3A49%3A05Z&sks=b&skv=2024-08-04&sig=8PyMBE55Kg%2BwsEud3HNnvGS/uydZELOU7wkAY/hUyzE%3D" alt="Street Style Chicken Noodles">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Street Style Chicken Noodles</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Street style chicken Indo-Chinese noodles</p>
-          </div>
-        </div>
-      </div>
-
-
-                     <h3 class="fw-bold text-center">Appetizers</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Guntur Kodi Vepudu">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Guntur Kodi Vepudu</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Guntur style kodi vepudu.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Thagubothu Kodi Pakodi">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Thagubothu Kodi Pakodi</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Thagubothu kodi pakodi.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Chicken Lollipop">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Chicken Lollipop</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Chicken lollipop.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Gobi 65">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Gobi 65</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Gobi 65.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Gobi Manchuria">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Gobi Manchuria</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Gobi manchuria.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Chilly Gobi">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Chilly Gobi</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Chilly Gobi.</p>
-          </div>
-        </div>
-      </div>
-
-                <div class="row g-4">
-
-        
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-46bc-61fb-bd3c-fe7c528570cb/raw?se=2025-08-24T21%3A46%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=75dd1692-2c44-5d55-a42e-91ec87e4db65&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T20%3A24%3A50Z&ske=2025-08-25T20%3A24%3A50Z&sks=b&skv=2024-08-04&sig=Fv3w8VDHFDJ2kHSxeB0%2B6o%2BlIWHbzlwP8fD0K44/mLo%3D" alt="Chilly Paneer">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Chilly Paneer</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$10.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Chilly Paneer.</p>
-          </div>
-        </div>
-      </div>
-
-
-                           <h3 class="fw-bold text-center">Drinks</h3>
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish1.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Thumps up">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Thumps up</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$2.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Thumps up.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Limca">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Limca</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$2.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Limca.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish2.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Irani Chai">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Irani Chai</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$1/$2</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Irani Chai.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Irani Chai with Bun Maska">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Irani Chai with Bun Maska</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$4.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Irani Chai with Bun Maska.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Nannari Sarbath">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Nannari Sarbath</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$3.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Nannari Sarbath.</p>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Rose Milk">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Rose Milk</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$3.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Rose Milk.</p>
-          </div>
-        </div>
-      </div>
-
-                <div class="row g-4">
-
-        
-        <div class="col-12 col-sm-6 col-lg-4 reveal">
-          <div class="menu-card glass p-3">
-            <!-- TODO: replace dish3.jpg -->
-            <img src="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-2140-622f-a186-3e7b9efb5515/raw?se=2025-08-24T21%3A55%3A58Z&sp=r&sv=2024-08-04&sr=b&scid=29cd9366-69db-5cfb-90d3-707d6e9a541d&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T17%3A49%3A07Z&ske=2025-08-25T17%3A49%3A07Z&sks=b&skv=2024-08-04&sig=YthODwMDzNO6VLKCxgKTpa3LR2oMLVZJbPBwiVnnkOM%3D" alt="Chikoo Shake">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <h5 class="mb-0">Chikoo Shake</h5>
-              <span class="badge rounded-pill text-bg-warning text-dark">$3.99</span>
-            </div>
-            <p class="mb-0 text-secondary small mt-1">Chikoo Shake.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="text-center mt-4"> -->
-        <!-- TODO: link to PDF or menu page -->
-        <!-- <a class="btn btn-outline-dark btn-lg" href="menu.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text me-1"></i> Full Menu (PDF)</a> -->
-      <!-- </div> -->
-    </div>
-  </section>
-
-  <!-- INSTAGRAM -->
-  <section id="instagram" class="container">
-    <h2 class="section-title reveal">Fresh From the ‘Gram</h2>
-    <p class="section-sub reveal">We post daily specials, pop-up locations, and mouthwatering reels. Follow <a href="https://www.instagram.com/mayabazarusa/" target="_blank" rel="noopener">@mayabazarusa</a>.</p>
-
-    <!-- Option A: Simple clickable grid linking to profile (no API) -->
-    <section class="container py-5 text-center">
-    <h2>Follow Us on Instagram</h2>
-    <div class="ratio ratio-16x9 mt-3">
-      <iframe src="https://www.instagram.com/mayabazarusa/embed" frameborder="0"></iframe>
-    </div>
-  </section>
-
-    <!-- Option B: Enable a third-party embed (uncomment if you add one)
-    <div class="ratio ratio-4x3 mt-4">
-      <iframe src="YOUR_WIDGET_URL" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    -->
-  </section>
-
-  <!-- FIND US / SCHEDULE -->
-  <section id="findus" class="schedule bg-light-subtle">
-    <div class="container">
-      <h2 class="section-title reveal">Where to Find Us</h2>
-      <p class="section-sub reveal">Catch us at Manchester, CT. Check our story for live updates.</p>
-
-      <div class="row g-4">
-        <!-- Example schedule cards -->
-        <div class="col-12 col-md-12 reveal">
-          <div class="card glass p-4 h-100">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="day">Everyday</span>
-              <span class="badge badge-time rounded-pill">5:00 PM – 11:00 PM</span>
-            </div>
-            <h5 class="mb-1">Pop-Up: <!-- TODO --> Manchester, CT</h5>
-            <p class="text-secondary mb-3 small">947 Center Street, Manchester, CT 06040</p>
-            <a class="btn btn-dark btn-sm" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/place/947+Center+St,+Manchester,+CT+06040/@41.7808098,-72.5630892,17z/data=!3m1!4b1!4m6!3m5!1s0x89e6571b98f307dd:0xe6728700794dc380!8m2!3d41.7808058!4d-72.5605143!16s%2Fg%2F11x6r93p8m?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">
-              <i class="bi bi-map me-1"></i> Open in Maps
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="https://www.instagram.com/mayabazarusa/" class="btn btn-brand btn-lg" target="_blank" rel="noopener">
-          Live Updates on Instagram <i class="bi bi-instagram ms-1"></i>
-        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- MAP -->
-  <section class="container">
-    <h2 class="section-title reveal">Map</h2>
-    <p class="section-sub reveal">Our typical service area in Hartford • New Haven.</p>
-    <!-- No API key needed for this embed style; replace place query as needed -->
-    <div class="ratio ratio-16x9 reveal">
-      <iframe
-        src="https://www.google.com/maps?q=Connecticut&output=embed"
-        style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="bg-light-subtle">
-    <div class="container">
-      <h2 class="section-title reveal">Catering & Inquiries</h2>
-      <p class="section-sub reveal">Book us for office lunches, weddings, and festivals.</p>
-
-      <div class="row g-4">
-        <div class="col-lg-6 reveal">
-          <div class="glass p-4 p-lg-5 h-100">
-            <h5 class="fw-bold mb-3">Get in touch</h5>
-            <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i> <!-- TODO --> <a href="tel:+1-203-410-7900">+1 (203) 410-7900</a></p>
-            <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i> <!-- TODO --> <a href="mailto:bookings@mayabazarusa.com">bookings@mayabazarusa.com</a></p>
-            <p class="mb-0"><i class="bi bi-instagram me-2"></i> <a href="https://www.instagram.com/mayabazarusa/" target="_blank" rel="noopener">@mayabazarusa</a></p>
+  <!-- CHECKOUT / PHONE VERIFY MODAL -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-phone me-2"></i>Verify Your Phone</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div id="verifyStep1">
+            <input type="tel" id="phoneInput" class="form-control mb-3" placeholder="+1XXXXXXXXXX">
+            <div id="recaptcha-container" class="mb-3"></div>
+            <button class="btn btn-brand w-100" id="sendOtpBtn">Send Verification Code</button>
+          </div>
+          <div id="verifyStep2" style="display:none;">
+            <input type="text" id="otpInput" class="form-control mb-3" placeholder="Enter OTP">
+            <button class="btn btn-success w-100" id="verifyOtpBtn">Verify Code</button>
           </div>
         </div>
-
-        <div class="col-lg-6 reveal">
-          <div class="glass p-4 p-lg-5 h-100">
-            <form action="mailto:bookings@mayabazarusa.com" method="post" enctype="text/plain">
-              <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Event Details</label>
-                <textarea name="message" rows="4" class="form-control" placeholder="Date, headcount, location…" required></textarea>
-              </div>
-              <button class="btn btn-dark" type="submit"><i class="bi bi-send me-1"></i> Send</button>
-              <small class="text-secondary d-block mt-2">Note: This uses your email app. For guaranteed delivery, email us directly.</small>
-            </form>
-          </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-brand" id="submitOrderBtn" disabled>Submit Order</button>
         </div>
       </div>
-
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer class="py-4">
-    <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3">
-      <p class="mb-0 small">© <span id="year"></span> Maya Bazar USA. All rights reserved.</p>
-      <div class="social">
-        <a href="https://www.instagram.com/mayabazarusa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="tel:+1-203-410-7900" aria-label="Phone"><i class="bi bi-telephone ms-2"></i></a>
-        <a href="mailto:bookings@mayabazarusa.com" aria-label="Email"><i class="bi bi-envelope ms-2"></i></a>
-      </div>
-    </div>
+  <footer>
+    <p>© 2025 Maya Bazar USA. All Rights Reserved.</p>
   </footer>
 
-  <!-- JS: Bootstrap + tiny enhancements -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
+
   <script>
-    // Current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // 🔥 Replace these values with your Firebase project config:
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6WqMWhDvJmrzcsPgCge8r1DoywI6FSYg",
+      authDomain: "mayabazarorders-7f85c.firebaseapp.com",
+      projectId: "mayabazarorders-7f85c",
+      storageBucket: "mayabazarorders-7f85c.firebasestorage.app",
+      messagingSenderId: "482425034805",
+      appId: "1:482425034805:web:37df2ba6d24a858e17b97c",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-    // Reveal animations on scroll (IntersectionObserver)
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target) } });
-    }, {threshold: 0.18});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    let confirmationResult = null;
+    let verifiedPhone = null;
+    const cart = [];
+    const cartModal = new bootstrap.Modal('#cartModal');
+    const checkoutModal = new bootstrap.Modal('#checkoutModal');
 
-    // Optional: Smooth-scroll offset for fixed navbar
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const id = a.getAttribute('href');
-        if(id.length > 1){
-          e.preventDefault();
-          const el = document.querySelector(id);
-          const y = el.getBoundingClientRect().top + window.scrollY - 70;
-          window.scrollTo({top:y, behavior:'smooth'});
-        }
+    // Add to cart
+    document.querySelectorAll('.addToCartBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart.push({ name: btn.dataset.name, price: parseFloat(btn.dataset.price) });
+        updateCartUI();
       });
+    });
+
+    function updateCartUI() {
+      document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    // View cart
+    document.getElementById('viewCartBtn').addEventListener('click', () => {
+      const list = document.getElementById('cartList');
+      const total = document.getElementById('cartTotal');
+      list.innerHTML = "";
+      let sum = 0;
+      cart.forEach(i => {
+        list.innerHTML += `<li class="list-group-item d-flex justify-content-between">
+          ${i.name} <span>$${i.price.toFixed(2)}</span>
+        </li>`;
+        sum += i.price;
+      });
+      total.textContent = sum.toFixed(2);
+      cartModal.show();
+    });
+
+    // Checkout
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      cartModal.hide();
+      checkoutModal.show();
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { size: 'normal' });
+    });
+
+    // Send OTP
+    document.getElementById('sendOtpBtn').addEventListener('click', async () => {
+      const phone = document.getElementById('phoneInput').value;
+      if (!phone) return alert('Enter phone number.');
+      try {
+        confirmationResult = await auth.signInWithPhoneNumber(phone, window.recaptchaVerifier);
+        document.getElementById('verifyStep1').style.display = 'none';
+        document.getElementById('verifyStep2').style.display = 'block';
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    // Verify OTP
+    document.getElementById('verifyOtpBtn').addEventListener('click', async () => {
+      const code = document.getElementById('otpInput').value;
+      try {
+        await confirmationResult.confirm(code);
+        verifiedPhone = document.getElementById('phoneInput').value;
+        document.getElementById('submitOrderBtn').disabled = false;
+        alert('Phone verified!');
+      } catch (err) {
+        alert('Invalid code: ' + err.message);
+      }
+    });
+
+    // Submit order to backend (Clover)
+    document.getElementById('submitOrderBtn').addEventListener('click', async () => {
+      if (!verifiedPhone) return alert('Verify phone first.');
+      const res = await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cart, phone: verifiedPhone })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert('Order placed! Pay at pickup.');
+        cart.length = 0;
+        updateCartUI();
+        checkoutModal.hide();
+      } else {
+        alert('Order failed: ' + data.error);
+      }
     });
   </script>
 </body>
